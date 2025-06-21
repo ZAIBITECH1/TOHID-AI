@@ -1,97 +1,54 @@
-import fetch from 'node-fetch';
-import pkg from 'api-qasim';
-const { ytmp4 } = pkg;
+import axios from 'axios';
 
-const fetchWithRetry = async (url, options, retries = 3) => {
-    for (let i = 0; i < retries; i++) {
-        const response = await fetch(url, options);
-        if (response.ok) return response;
-        console.log(`Retrying... (${i + 1})`);
+const handler = async (m, { conn, args }) => {
+  try {
+    const query = args[0];
+    if (!query) return m.reply('❓ *Example:* .ytmp4 <YouTube URL>');
+
+    // Notify user that the video is being fetched
+    await m.reply('🔍 *Fetching video details...*');
+
+    // Encode the YouTube URL
+    const encodedUrl = encodeURIComponent(query);
+    
+    // New API URL with apikey parameter
+    const apiUrl = `https://api.giftedtech.my.id/api/download/dlmp4?apikey=gifted&url=${encodedUrl}`;
+    const response = await axios.get(apiUrl);
+
+    // Check if response data contains downloadUrl (note the different response structure)
+    if (!response.data?.status || !response.data?.result?.downloadUrl) {
+      return m.reply('🚫 *Error fetching video.* Please check the URL or try again later.');
     }
-    throw new Error('Failed to fetch media content after retries');
+
+    // Extract video details from the new API response structure
+    const { title, quality, thumbnail, downloadUrl, size } = response.data.result;
+
+    // Prepare the caption for the video message
+    const caption = `🎥 *Title:* ${title}
+📊 *Quality:* ${quality}
+📦 *Size:* ${size}
+🖼️ *Thumbnail:* ${thumbnail}
+Tohid-Ai Bot 2025
+📥 *Download the video:* ${downloadUrl}`;
+
+    // Send the video and the caption
+    await conn.sendMessage(m.chat, {
+      video: { url: downloadUrl },
+      caption: caption,
+      thumbnail: { url: thumbnail },
+    }, { quoted: m });
+
+    // Notify user of successful completion
+    await m.reply('✅ *Tohid-Ai Bot Video sent successfully!*');
+
+  } catch (error) {
+    console.error('Error in ytmp4 command:', error.message);
+    m.reply('⚠️ *An error occurred while processing your request.* Please try again later.');
+  }
 };
 
-const handler = async (m, { args, conn, usedprefix }) => {
-    // Check if a URL was provided
-    if (!args.length) {
-        await m.reply('Please provide a YouTube URL.');
-        return;
-    }
-
-    const url = args.join(' '); // Join arguments to handle spaces in URLs
-    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
-
-    // Validate the URL format
-    if (!youtubeRegex.test(url)) {
-        await m.react('❌'); // React with a cross emoji for invalid URL
-        await m.reply('Invalid YouTube URL. Please provide a valid URL.');
-        return;
-    }
-
-    await m.react('⏳'); // React with a loading emoji
-
-    try {
-        // Fetch video details with ytdown
-        const response = await ytmp4(url);
-        
-        // Check if response is valid and contains 'video' field
-        if (!response || !response.video) {
-            console.error('Invalid response structure:', response); // Log invalid response for better debugging
-            throw new Error('Invalid response from the downloader.');
-        }
-
-        const videoUrl = response.video; // Use the 'video' key for the URL
-        if (!videoUrl) {
-            throw new Error('Video URL not found.');
-        }
-
-        const title = response.title || 'video';
-        const author = response.author || 'Unknown Author';
-        const duration = response.duration || 'N/A';
-        const views = response.views || '0';
-        const uploadDate = response.upload || 'Unknown Date';
-        const thumbnail = response.thumbnail || '';
-        
-        const caption = `*𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 © 𝚃𝙾𝙷𝙸𝙳-𝙰𝙸*\n\n` +
-                        `*Title:* ${title}\n` +
-                        `*Author:* ${author}\n` +
-                        `*Duration:* ${duration}\n` +
-                        `*Views:* ${views}\n` +
-                        `*Uploaded on:* ${uploadDate}`;
-
-        // Fetch the video file with retry
-        const mediaResponse = await fetchWithRetry(videoUrl, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
-                'Accept': 'application/json, text/plain, */*'
-            }
-        });
-
-        const contentType = mediaResponse.headers.get('content-type');
-        if (!contentType || !contentType.includes('video')) {
-            throw new Error('Invalid content type received');
-        }
-
-        const arrayBuffer = await mediaResponse.arrayBuffer();
-        const mediaBuffer = Buffer.from(arrayBuffer);
-        if (mediaBuffer.length === 0) throw new Error('Downloaded file is empty');
-
-        // Send the video file along with the caption
-        await conn.sendFile(m.chat, mediaBuffer, `null`, caption, m, false, {
-            mimetype: 'video/mp4',
-            thumbnail: thumbnail
-        });
-
-        await m.react('✅'); // React with a checkmark emoji for success
-    } catch (error) {
-        console.error('Error fetching video:', error.message, error.stack);
-        await m.reply('An error occurred while fetching the video. Please try again later.');
-        await m.react('❌'); // React with a cross emoji for errors
-    }
-};
-
-handler.help = ['ytmp4', 'ytv'];
-handler.tags = ['dl'];
-handler.command = ['ytmp4', 'ytv'];
+handler.help = ['ytmp4'];
+handler.tags = ['download'];
+handler.command = /^ytmp4$/i;
 
 export default handler;

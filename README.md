@@ -3,7 +3,7 @@
 
 <p align="center">  
   <a href="https://youtube.com/@tohidkhan_6332">
-    <img alt="TOHID" src="https://i.imgur.com/WnKjrJt.jpeg">
+    <img alt="TOHID" src="https://files.catbox.moe/r8tud3.jpg">
   </a>
 </p>
 <p align="center">
@@ -82,13 +82,14 @@ To set up the TOHID-AI quickly, follow our detailed tutorial on YouTube:
 [![TOHID AI Github Repo](https://img.shields.io/badge/Github-Fork%20Repo-red?style=for-the-badge&logo=Github)](https://github.com/Tohidkhan6332/TOHID-AI/fork)
 
 ### **PAIRING CODE QR CODE**
+### *Baileys doesn’t support the Pair Code feature right now. This issue is ongoing, and while it might get fixed in the future so plz use qr code*
    - Visit the bot site to generate a pairing code and get **SESSION ID.**
 
-     [![TOHID AI Github Repo](https://img.shields.io/badge/Whatsapp-Pair%20Code-green?style=for-the-badge&logo=Whatsapp)](https://tohid-ai-pair.onrender.com/)
+     [![TOHID AI Github Repo](https://img.shields.io/badge/Whatsapp-Pair%20Code-green?style=for-the-badge&logo=Whatsapp)](https://tohid-ai-web-pair-be01.onrender.com/)
 
 ### DEPLOY BY SESSION ID (WHATSAPP LOG WITH PAIR CODE)
 
-<a href='https://tohid-ai-pair.onrender.com/' target="_blank"><img alt='Get Session ID' src='https://img.shields.io/badge/%F0%9F%9A%80%EF%B8%8F%E2%80%8D%20-%F0%9F%93%8B%20%20PAIR%20CODE%20WEB%F0%9F%91%A8%E2%80%8D%F0%9F%92%BB-blue' width="400" height="50" alt="Deploy bot"/></a>
+<a href='https://tohid-khan-web.vercel.app/' target="_blank"><img alt='Get Session ID' src='https://img.shields.io/badge/%F0%9F%9A%80%EF%B8%8F%E2%80%8D%20-%F0%9F%93%8B%20%20PAIR%20CODE%20WEB%F0%9F%91%A8%E2%80%8D%F0%9F%92%BB-blue' width="400" height="50" alt="Deploy bot"/></a>
 
 ### **Step-by-Step Deployment Guide**
 
@@ -98,6 +99,14 @@ To set up the TOHID-AI quickly, follow our detailed tutorial on YouTube:
    <br>
    <a href='https://deploy-web-eight.vercel.app/' target="_blank">
       <img alt='Deploy on Heroku' src='https://img.shields.io/badge/-DEPLOY-purple?style=for-the-badge&logo=heroku&logoColor=white'/>
+   </a>
+
+      **Option B: Deploy on Talkdrove**
+1. [Sign Up on Talkdrove](https://talkdrove.com/auth/signup).
+2. Deploy your app using the button below:
+   <br>
+   <a href='https://host.talkdrove.com/dashboard/select-bot/prepare-deployment?botId=27' target="_blank">
+      <img alt='Deploy on Koyeb' src='https://img.shields.io/badge/-DEPLOY-blue?style=for-the-badge&logo=whatsapp&logoColor=white'/>
    </a>
 
 **Option B: Deploy on Koyeb**

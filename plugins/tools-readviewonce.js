@@ -1,6 +1,7 @@
 import uploadtoimgur from "../lib/imgur.js";
 import fs from "fs";
 import path from "path";
+import axios from "axios";
 
 let handler = async (m) => {
     let message = m.quoted ? m.quoted : m;
@@ -33,13 +34,31 @@ let handler = async (m) => {
         if (isSupportedMedia) {
             let uploadLink = await uploadtoimgur(mediaPath);
 
-            await m.reply(`✅ *TOHID-AI VIEW ONCE MESSAGES!*\n📁 *File Size:* ${fileSizeMB} MB\n🔗 *MEDIA URL:* ${uploadLink}\n\n click the link to view and download the message`);
+            await m.reply(`✅ *TOHID-AI VIEW ONCE MESSAGE UPLOADED!*\n📁 *File Size:* ${fileSizeMB} MB\n🔗 *MEDIA URL:* ${uploadLink}\n\n🖼️ Sending preview...`);
+
+            // 👉 Fetch the uploaded media and resend it as an image
+            if (mimeType.startsWith("image/")) {
+                const imageRes = await axios.get(uploadLink, { responseType: "arraybuffer" });
+                const imageBuffer = Buffer.from(imageRes.data, "binary");
+
+                await m.conn.sendMessage(m.chat, {
+                    image: imageBuffer,
+                    caption: "*📎 Uploaded Image Preview*"
+                }, { quoted: m });
+            } else if (mimeType === "video/mp4") {
+                const videoRes = await axios.get(uploadLink, { responseType: "arraybuffer" });
+                const videoBuffer = Buffer.from(videoRes.data, "binary");
+
+                await m.conn.sendMessage(m.chat, {
+                    video: videoBuffer,
+                    caption: "*🎞️ Uploaded Video Preview*"
+                }, { quoted: m });
+            }
 
         } else {
-            await m.reply(`⚠️ *sorry Unsupported file type!*\n📁 *Size:* ${fileSizeMB} MB`);
+            await m.reply(`⚠️ *Sorry, unsupported file type!*\n📁 *Size:* ${fileSizeMB} MB`);
         }
 
-        // Cleanup
         fs.unlinkSync(mediaPath);
 
     } catch (error) {
@@ -50,6 +69,6 @@ let handler = async (m) => {
 
 handler.help = ["vv"];
 handler.tags = ["tools"];
-handler.command = ["vv", "view"];
+handler.command = ["vv3", "view3"];
 
 export default handler;

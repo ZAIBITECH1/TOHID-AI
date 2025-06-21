@@ -82,6 +82,9 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *menu2*
 ◈ • *menu3*
 ◈ • *menu4*
+◈ • *quranmenu*
+◈ • *studymenu*
+◈ • *asmaul*
 ◈ • *mrcs*
 ◈ • *owner*
 ◈ • *ping*
@@ -92,9 +95,17 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *speedtest*
 ◈ • *stoprent*
 ◈ • *uptime*
+◈ • *getpair*
+◈ • *report*
+◈ • *gitp*
+◈ • *gitfile*
+◈ • *file*
+◈ • *calculator*
 ╰─┬─★─☆─♪♪─❍
 ╭─┴❍「 *AI MENU* 」❍
 ◈ • *ai*
+◈ • *tohidai*
+◈ • *gemini*
 ◈ • *blackbox*
 ◈ • *blackpink*
 ◈ • *bro*
@@ -106,6 +117,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *gpt4*
 ◈ • *travel*
 ◈ • *why*
+◈ • *deepseek*
+◈ • *chatbot*
 ╰─┬─★─☆─♪♪─❍
 ╭─┴❍「 *TEXTPRO MENU* 」❍
 ◈ • *3dsilver*
@@ -150,6 +163,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *shonin*
 ◈ • *simurg*
 ◈ • *v2beta*
+◈ • *gen*
 ╰─┬─★─☆─♪♪─❍
 ╭─┴❍「 *OWNER MENU* 」❍
 ◈ • *addowner*
@@ -198,6 +212,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *update*
 ◈ • *var*
 ◈ • *resetprefix*
+◈ • *pmblock*
 ╰─┬─★─☆─♪♪─❍
 ╭─┴❍「 *RANDOM PIC* 」❍
 ◈ • *aesthetic*
@@ -250,16 +265,21 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *antilink*
 ◈ • *delete*
 ◈ • *demote*
+◈ • *demoteall*
 ◈ • *disable*
 ◈ • *enable*
 ◈ • *group*
 ◈ • *groupinfo*
 ◈ • *kick*
+◈ • *kick2*
+◈ • *kick3*
+◈ • *kickall*
 ◈ • *link*
 ◈ • *mysn*
 ◈ • *notify*
 ◈ • *poll*
 ◈ • *promote*
+◈ • *promoteall*
 ◈ • *register*
 ◈ • *resetlink*
 ◈ • *setbye*
@@ -278,9 +298,14 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *toxic*
 ◈ • *delwarn*
 ◈ • *hidetag*
+◈ • *attendance*
+◈ • *boy*
+◈ • *girl*
+◈ • *shadi*
 ╰─┬─★─☆─♪♪─❍
 ╭─┴❍「 *DOWNLOAD M* 」❍
 ◈ • *apkdl*
+◈ • *apk*
 ◈ • *apksearch*
 ◈ • *audio*
 ◈ • *capcut*
@@ -288,6 +313,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *facebook*
 ◈ • *gdrive*
 ◈ • *gimage*
+◈ • *image*
+◈ • *img*
 ◈ • *gitclone*
 ◈ • *githubdl*
 ◈ • *githubstalk*
@@ -299,11 +326,16 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *mediafire*
 ◈ • *mega*
 ◈ • *npmstalk*
+◈ • *npmpackage*
+◈ • *npm2*
 ◈ • *pinterest*
 ◈ • *pinterest2*
 ◈ • *play*
 ◈ • *play2*
+◈ • *play3*
+◈ • *play4*
 ◈ • *play5*
+◈ • *play7*
 ◈ • *playstore*
 ◈ • *playvid*
 ◈ • *ringtone*
@@ -319,6 +351,9 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *ytmp3*
 ◈ • *ytmp4*
 ◈ • *ytsearch*
+◈ • *yta*
+◈ • *ytv*
+◈ • *yts*
 ╰─┬─★─☆─♪♪─❍
 ╭─┴❍「 *ECONOMY MENU* 」❍
 ◈ • *addgold*
@@ -532,6 +567,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ • *reddit*
 ◈ • *removebg*
 ◈ • *remini*
+◈ • *hd*
+◈ • *fullhd*
 ◈ • *ssweb*
 ◈ • *styletext*
 ◈ • *technews*

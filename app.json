@@ -5,7 +5,7 @@
   "logo": "https://i.imgur.com/M1BzE37.jpeg",
   "success_url": "https://github.com/Tohidkhan6332/TOHID-AI",
   "keywords": [
-    "whatsapp Ai", "nodejs", "heroku", "bot", "urdu", "english", "indonesian", "arab", "portuguese", "italian", "french", "whatsapp",
+    "whatsapp Ai", "nodejs", "heroku", "bot", "urdu", "english", "indonesian", "hindi", "portuguese", "italian", "french", "whatsapp",
     "termux", "superbot", "multi-device", "md", "official", "javascript", "tohid-ai-bot"
   ],
   "repository": "https://github.com/Tohidkhan6332/TOHID-AI",
@@ -14,7 +14,7 @@
     "OWNERS": {
       "description": "owner number",
       "required": true,
-      "value": ""
+      "value": "917849917350"
     },
     "BOTNAME": {
       "description": "Give your BOT a name",
@@ -34,12 +34,12 @@
     "MODE": {
       "description": "mode public or private",
       "required": true,
-      "value": ""
+      "value": "public"
     },
     "PREFIX": {
       "description": "put any one symbol here except @ and + , leave it Blank if you want to use multiple prefix",
       "required": false,
-      "value": ""
+      "value": "."
     },
      "HKEY": {
       "description": "Put your Heroku api key Here , Get one from here https://dashboard.heroku.com/account",
@@ -54,12 +54,12 @@
     "statusview": {
       "description": "make it true if you want bot to view status",
       "required": false,
-      "value": ""
+      "value": "true"
     },
     "antidelete": {
       "description": "bot will forward deleted messages if you make it true",
       "required": false,
-      "value": "false"
+      "value": "true"
     },
     "HOBBIES": {
       "description": "owners hobby for intro card",
@@ -84,12 +84,12 @@
     "TIME_ZONE": {
       "description": "your time zone",
       "required": true,
-      "value": "Africa/Nairobi"
+      "value": "India/Haryana"
     },
     "OWNER_NAME": {
       "description": "your owner Name",
       "required": false,
-      "value": ""
+      "value": "Mr Tohid"
     },
      "REMOVEBG_KEY": {
       "description": "your Remove background api key",
